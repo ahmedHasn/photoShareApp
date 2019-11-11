@@ -1,0 +1,38 @@
+<!-- form -->
+<div class="container justify-content-center align-items-center">
+    <div class="form-wrapper text-center">
+        <form #registerForm="ngForm" (ngSubmit)="registerForm.form.valid && onRegister(registerForm.value)"
+            class="form-signin">
+            <h2 class="h3 mb-3 font-weight-normal">Sign Up</h2>
+            <div class="form-group">
+                <input type="text" class="form-control" name="name" placeholder="Name" required ngModel
+                    #nameInput="ngModel">
+                <div *ngIf="registerForm.submitted && nameInput.invalid">
+                    <span class="help-block" style="color: red;" *ngIf="nameInput?.errors.required">Please enter your
+                        full name.</span>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="username" placeholder="Username" required ngModel
+                    #usernameInput="ngModel">
+                <div *ngIf="registerForm.submitted && usernameInput.invalid">
+                    <span class="help-block" style="color: red;" *ngIf="usernameInput?.errors.required">Please enter a
+                        username.</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="email" placeholder="Email" email required ngModel
+                    #emailInput="ngModel">
+                <div *ngIf="registerForm.submitted && emailInput.invalid">
+                    <span class="help-block" style="color: red;" *ngIf="emailInput?.errors.required">Please enter a
+                        valid email
+                        address.</span>
+                </div>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+        </form>
+        <small><a routerLink="/login">Have an Account? Log in</a></small>
+    </div>
+
+</div>

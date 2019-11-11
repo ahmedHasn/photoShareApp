@@ -1,0 +1,32 @@
+<!-- form -->
+<div class="container justify-content-center align-items-center">
+  <div class="form-wrapper text-center">
+    <form #loginForm="ngForm" (ngSubmit)="loginForm.form.valid && onLogin(loginForm.value)" class="form-signin">
+      <h2 class="h3 mb-3 font-weight-normal">Log In</h2>
+      <div class="form-group">
+        <input type="text" class="form-control" name="username" [autocomplete]="'nope'" placeholder="Username" required
+          ngModel #usernameInput="ngModel" />
+        <div *ngIf="loginForm.submitted && usernameInput.invalid">
+          <span class="help-block" style="color: red;" *ngIf="usernameInput?.errors.required">Please enter a
+            username</span>
+        </div>
+        <!-- <div *ngIf="usernameInput.invalid &&(usernameInput.dirty || usernameInput.touched)">
+                  <span class="help-block" *ngIf="usernameInput?.errors.required">Please enter a username</span>
+            </div> -->
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" name="password" [autocomplete]="'nope'" placeholder="Password"
+          required ngModel #passwordInput="ngModel" />
+        <div *ngIf="loginForm.submitted && passwordInput.invalid">
+          <span class="help-block" style="color: red;" *ngIf="passwordInput?.errors.required">Please enter a
+            password.</span>
+        </div>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">
+        Sign in
+      </button>
+    </form>
+    <small><a routerLink="/reset-password">Forgot password?</a></small><br />
+    <small><a routerLink="/sign-up">Need an account?</a></small>
+  </div>
+</div>
